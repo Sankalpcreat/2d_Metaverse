@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from '../auth/Login'; 
 
-const LoginView: React.FC = () => {
+const LoginPage: React.FC = () => {
   return (
     <div>
       <h2>Login to Your Account</h2>
@@ -10,4 +10,4 @@ const LoginView: React.FC = () => {
   );
 };
 
-export default LoginView;
+export default LoginPage;
