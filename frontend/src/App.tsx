@@ -1,14 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';  
+import { Provider } from 'react-redux';
+import store from './store';
 import LoginPage from './pages/LoginPage'; 
 import SignupPage from './pages/SignupPage';  
 import GameRoom from './pages/GameRoom';  
-import { AuthProvider } from './auth/AuthProvider';  //this is due to global state management because mutilplayer game
+
 
 const App: React.FC = () => {
   return (
-    <AuthProvider>
+    <Provider store={store}>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -17,7 +19,7 @@ const App: React.FC = () => {
           <Route path="/game-room" element={<GameRoom />} />
         </Routes>
       </Router>
-    </AuthProvider>
+      </Provider>
   );
 };
 
