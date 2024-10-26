@@ -1,0 +1,1 @@
+// Store to manage authentication (logged-in state, user data)

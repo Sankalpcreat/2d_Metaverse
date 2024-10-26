@@ -1,0 +1,1 @@
+// Component for interactive objects like chairs, doors

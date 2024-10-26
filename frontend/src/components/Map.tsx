@@ -1,0 +1,1 @@
+// Component for rendering the Phaser.js game (map)

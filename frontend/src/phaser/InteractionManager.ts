@@ -1,0 +1,1 @@
+// Manage in-game object interactions (sitting, doors)
