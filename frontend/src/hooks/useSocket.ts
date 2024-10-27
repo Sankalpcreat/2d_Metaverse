@@ -1,10 +1,15 @@
-// 1-connection to the socket.io server 
-// 2-playerMoved -check the movement from other player and update their update position in redux store
-// 3-send the current player movement data to the server
 
+// Handle Incoming Movement: Listen for playerMoved events from other players and update their position in the Redux store.
+// Send Player Movement: Emit the player's movement to the server using sendPlayerMovement.
+// Return Hook API: Return the necessary function from the useSocket hook to use in components.
+// Use the Hook in Components: Use the useSocket hook to send and receive real-time movement data in your game.
+
+// Install Dependencies: Install Socket.io-client and Redux.
 import { useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { useDispatch, useSelector } from 'react-redux';
+
+// Create useSocket Hook: Establish a connection to the Socket.io server and handle the player's movement.
 import { RootState } from '../store';
 import { updatePosition } from '../store/playerSlice';
 
