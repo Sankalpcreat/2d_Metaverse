@@ -3,7 +3,7 @@ Technologies Used
 Frontend:
 React:
 For building a dynamic and interactive user interface.
-
+![Structure](./frontend/public/strucutre.png)
 Vite:
 Modern development environment providing fast builds and hot-reloading for a seamless developer experience.
 
