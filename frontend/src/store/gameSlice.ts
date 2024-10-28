@@ -1,32 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-// The initial state defines the default values for the game state when the application is first loaded or initialized.
 interface GameState {
-  room: string;       
-  players: string[]; 
+  roomId: string;
+  players: { [id: string]: { x: number; y: number } };
 }
 
 const initialState: GameState = {
-  room: '',     
-  players: [],       
+  roomId: 'room1',
+  players: {},
 };
 
-export const gameSlice = createSlice({
+const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    // Reducer for setting the current room
-    setRoom: (state, action: PayloadAction<string>) => {
-      state.room = action.payload; 
+    setRoomId: (state, action: PayloadAction<string>) => {
+      state.roomId = action.payload;
     },
-    // Reducer for updating the list of players
-    updatePlayers: (state, action: PayloadAction<string[]>) => {
-      state.players = action.payload;  
+    updatePlayerPosition: (state, action: PayloadAction<{ id: string; x: number; y: number }>) => {
+      const { id, x, y } = action.payload;
+      state.players[id] = { x, y };
     },
   },
 });
 
-// Export the actions to be used in other parts of the application
-export const { setRoom, updatePlayers } = gameSlice.actions;
-
+export const { setRoomId, updatePlayerPosition } = gameSlice.actions;
 export default gameSlice.reducer;

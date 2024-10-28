@@ -1,19 +1,13 @@
 import React, { useEffect } from 'react';
-import Phaser from 'phaser';
-// useDispatch and useSelector are used to manage player data (like the position) and update the global state via Redux.
 import { useDispatch, useSelector } from 'react-redux';
+import Phaser from 'phaser';
 import { RootState } from '../store';
-// The player’s position is continuously updated in the Redux store using the updatePosition action from the playerSlice.ts.
 import { updatePosition } from '../store/playerSlice';
-import { Player } from '../phaser/Player';
-import { useSocket } from '../hooks/useSocket';  
-
 
 export const Avatar: React.FC = () => {
   const dispatch = useDispatch();
   const player = useSelector((state: RootState) => state.player);
-  const { sendPlayerMovement } = useSocket();
-  // Phaser is used to create the game world where the player avatar will be displayed.
+
   useEffect(() => {
     const config: Phaser.Types.Core.GameConfig = {
       type: Phaser.AUTO,
@@ -21,9 +15,9 @@ export const Avatar: React.FC = () => {
       height: 600,
       parent: 'phaser-avatar',
       scene: {
-        preload: preload,
-        create: create,
-        update: update,
+        preload,
+        create,
+        update,
       },
       physics: {
         default: 'arcade',
@@ -37,25 +31,13 @@ export const Avatar: React.FC = () => {
     const game = new Phaser.Game(config);
 
     function preload() {
-      this.load.spritesheet('player', 'assets/avatar.png', {
-        frameWidth: 32,
-        frameHeight: 48,
-      });
+      this.load.spritesheet('player', 'assets/avatar.png', { frameWidth: 32, frameHeight: 48 });
     }
 
     function create() {
-      const playerSprite = new Player(this, player.x, player.y);
+      const playerSprite = this.physics.add.sprite(player.x, player.y, 'player');
       this.player = playerSprite;
-
-      // Create player animations
-      this.anims.create({
-        key: 'walk',
-        frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
-        frameRate: 10,
-        repeat: -1,
-      });
-
-      this.player.sprite.play('walk');
+      this.player.setCollideWorldBounds(true);
     }
 
     function update() {
@@ -77,16 +59,14 @@ export const Avatar: React.FC = () => {
       } else {
         this.player.setVelocityY(0);
       }
-      // Send the player's new position to the server
-      sendPlayerMovement({ x: this.player.sprite.x, y: this.player.sprite.y });
-      // Update player position in the Redux store
-      dispatch(updatePosition({ x: this.player.sprite.x, y: this.player.sprite.y }));
+
+      dispatch(updatePosition({ x: this.player.x, y: this.player.y }));
     }
 
     return () => {
-      game.destroy(true); // Clean up on unmount
+      game.destroy(true);
     };
-  }, [dispatch, player.x, player.y,sendPlayerMovement]);
+  }, [dispatch, player.x, player.y]);
 
   return <div id="phaser-avatar"></div>;
 };

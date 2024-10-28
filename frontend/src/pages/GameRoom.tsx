@@ -1,27 +1,19 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store';
-import { updatePosition } from '../store/playerSlice';
-import { setRoom } from '../store/gameSlice';
+import React from 'react';
+import { Map } from '../components/Map';  
+import { Avatar } from '../components/Avatar'; 
+import { ObjectInteractions } from '../components/ObjectInteraction'; 
+import { UI } from '../components/UI'; 
 
-const GameRoom: React.FC = () => {
-  const player = useSelector((state: RootState) => state.player);
-  const currentRoom = useSelector((state: RootState) => state.game.currentRoom);
-  const dispatch = useDispatch();
-
-  const movePlayer = () => {
-    dispatch(updatePosition({ x: player.position.x + 10, y: player.position.y }));
-  };
-
-  const changeRoom = () => {
-    dispatch(setRoom('battle-arena'));
-  };
-
+export const GameRoom: React.FC = () => {
   return (
-    <div>
+    <div className="game-room">
       <h1>Game Room</h1>
-      <p>Player: {player.username}</p>
-      <button onClick={movePlayer}>Move Player</button>
-      <button onClick={changeRoom}>Go to Battle Arena</button>
+      <div className="game-container">
+        <Map /> 
+        <Avatar />
+        <ObjectInteractions /> 
+        <UI /> 
+      </div>
     </div>
   );
 };

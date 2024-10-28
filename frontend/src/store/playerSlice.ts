@@ -1,32 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface PlayerState {
+  id: string;
   x: number;
   y: number;
-  username: string;
 }
-// Define the initial state (initialState) with the player's x, y position and username.
+
 const initialState: PlayerState = {
-  x: 0,
-  y: 0,
-  username: '',
+  id: 'player1',
+  x: 100,
+  y: 100,
 };
 
-export const playerSlice = createSlice({
+const playerSlice = createSlice({
   name: 'player',
   initialState,
   reducers: {
-    // Action to update player position
     updatePosition: (state, action: PayloadAction<{ x: number; y: number }>) => {
       state.x = action.payload.x;
       state.y = action.payload.y;
     },
-    // Action to set the player's username
-    setUsername: (state, action: PayloadAction<string>) => {
-      state.username = action.payload;
-    },
   },
 });
-// setUsername action sets the player's name (useful when a player logs in or registers).
-export const { updatePosition, setUsername } = playerSlice.actions;
+
+export const { updatePosition } = playerSlice.actions;
 export default playerSlice.reducer;

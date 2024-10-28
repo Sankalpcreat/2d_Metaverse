@@ -5,15 +5,15 @@ export class Player {
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     this.sprite = scene.physics.add.sprite(x, y, 'player');
-    this.sprite.setCollideWorldBounds(true); // Ensure the player stays within the game bounds
+    this.sprite.setCollideWorldBounds(true);
   }
 
-  // Update the player's X velocity
+  update(time: number, delta: number) {}
+
   setVelocityX(value: number) {
     this.sprite.setVelocityX(value);
   }
 
-  // Update the player's Y velocity
   setVelocityY(value: number) {
     this.sprite.setVelocityY(value);
   }
