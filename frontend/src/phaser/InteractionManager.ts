@@ -5,15 +5,16 @@ export class InteractionManager {
     this.scene = scene;
     this.player = player;
 
-    // Listen for interaction keys
+    // Set up the interaction key (SPACE)
     this.interactKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
 
   update() {
+    // If the interaction key is pressed, handle the interaction
     if (Phaser.Input.Keyboard.JustDown(this.interactKey)) {
-      // Handle object interaction when the player presses SPACE
+      // Implement your interaction logic here
       console.log('Interaction triggered');
-      // Implement object interaction logic here
+      // Example: Implement logic to interact with a nearby object
     }
   }
 }
