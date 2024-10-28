@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { Player } from './Player';
 
+// Class to handle player input using keyboard controls
 export class InputManager {
   cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   player: Player;
@@ -9,7 +10,7 @@ export class InputManager {
     this.player = player;
     this.cursors = scene.input.keyboard.createCursorKeys();
   }
-
+// Method to update player movement based on input
   update() {
     const velocity = 160;
 

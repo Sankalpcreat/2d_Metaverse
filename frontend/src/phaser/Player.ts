@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+// Class representing the player character
 export class Player {
   sprite: Phaser.Physics.Arcade.Sprite;
 
@@ -10,10 +11,11 @@ export class Player {
 
   update(time: number, delta: number) {}
 
+   // Method to set the player's horizontal velocity
   setVelocityX(value: number) {
     this.sprite.setVelocityX(value);
   }
-
+ // Method to set the player's vertical velocity
   setVelocityY(value: number) {
     this.sprite.setVelocityY(value);
   }
