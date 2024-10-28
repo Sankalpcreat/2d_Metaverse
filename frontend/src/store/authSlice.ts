@@ -9,7 +9,7 @@ const initialState: AuthState = {
   isAuthenticated: false,
   token: null,
 };
-
+// Create a Redux slice
 const authSlice = createSlice({
   name: 'auth',
   initialState,
