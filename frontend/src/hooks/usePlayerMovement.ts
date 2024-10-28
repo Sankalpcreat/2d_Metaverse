@@ -3,10 +3,12 @@ import { useDispatch } from 'react-redux';
 import { updatePlayerPosition } from '../store/playerSlice';
 import { useSocket } from './useSocket';
 
+
+// Custom hook to handle player movement and send updates to the server
 export const usePlayerMovement = () => {
   const dispatch = useDispatch();
   const { sendPlayerMovement } = useSocket();
-
+  // useEffect hook to add keyboard event
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       let movement = { x: 0, y: 0 };

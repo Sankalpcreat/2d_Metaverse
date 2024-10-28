@@ -4,6 +4,7 @@ import { GameScene } from '../phaser/GameScene';
 
 export const Map: React.FC = () => {
   useEffect(() => {
+    // Phaser configuration object that defines how the game will run
     const config: Phaser.Types.Core.GameConfig = {
       type: Phaser.AUTO,
       width: 800,
@@ -20,7 +21,7 @@ export const Map: React.FC = () => {
     };
 
     const game = new Phaser.Game(config);
-
+      //clean up the for avoiding memory leakes
     return () => {
       game.destroy(true);
     };
