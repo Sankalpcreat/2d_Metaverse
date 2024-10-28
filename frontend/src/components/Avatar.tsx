@@ -6,10 +6,13 @@ import { RootState } from '../store';
 // The player’s position is continuously updated in the Redux store using the updatePosition action from the playerSlice.ts.
 import { updatePosition } from '../store/playerSlice';
 import { Player } from '../phaser/Player';
+import { useSocket } from '../hooks/useSocket';  
+
 
 export const Avatar: React.FC = () => {
   const dispatch = useDispatch();
   const player = useSelector((state: RootState) => state.player);
+  const { sendPlayerMovement } = useSocket();
   // Phaser is used to create the game world where the player avatar will be displayed.
   useEffect(() => {
     const config: Phaser.Types.Core.GameConfig = {
@@ -74,7 +77,8 @@ export const Avatar: React.FC = () => {
       } else {
         this.player.setVelocityY(0);
       }
-
+      // Send the player's new position to the server
+      sendPlayerMovement({ x: this.player.sprite.x, y: this.player.sprite.y });
       // Update player position in the Redux store
       dispatch(updatePosition({ x: this.player.sprite.x, y: this.player.sprite.y }));
     }
@@ -82,7 +86,7 @@ export const Avatar: React.FC = () => {
     return () => {
       game.destroy(true); // Clean up on unmount
     };
-  }, [dispatch, player.x, player.y]);
+  }, [dispatch, player.x, player.y,sendPlayerMovement]);
 
   return <div id="phaser-avatar"></div>;
 };

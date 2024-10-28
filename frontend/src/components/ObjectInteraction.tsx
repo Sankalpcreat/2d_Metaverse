@@ -3,10 +3,13 @@ import Phaser from 'phaser';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { InteractionManager } from '../phaser/InteractionManager';
+import { useSocket } from '../hooks/useSocket';
+
 
 export const ObjectInteractions: React.FC = () => {
   const dispatch = useDispatch();
   const player = useSelector((state: RootState) => state.player);
+  const { sendPlayerMovement } = useSocket();
 
   useEffect(() => {
     const config: Phaser.Types.Core.GameConfig = {
@@ -93,6 +96,10 @@ export const ObjectInteractions: React.FC = () => {
         this.player.setVelocityY(0);
       }
 
+
+      // Send the player's new position to the server
+      sendPlayerMovement({ x: this.player.sprite.x, y: this.player.sprite.y });
+
       // Handle object interaction when player presses SPACE
       if (Phaser.Input.Keyboard.JustDown(this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE))) {
         this.interactionManager.update();
@@ -102,7 +109,7 @@ export const ObjectInteractions: React.FC = () => {
     return () => {
       game.destroy(true); // Cleanup Phaser 
     };
-  }, [dispatch, player.x, player.y]);
+  }, [dispatch, player.x, player.y,sendPlayerMovement]);
 
   return <div id="phaser-interactions"></div>;
 };
