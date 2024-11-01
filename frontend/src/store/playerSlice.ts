@@ -1,13 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface PlayerState {
-  id: string;
   x: number;
   y: number;
 }
 
 const initialState: PlayerState = {
-  id: 'player1',
   x: 100,
   y: 100,
 };
