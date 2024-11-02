@@ -1,8 +1,8 @@
 import React from 'react';
-import Map from '../components/Map';
-import Avatar from '../components/Avatar';
-import ObjectInteractions from '../components/ObjectInteractions';
-import UI from '../components/UI';
+import {Map} from '../components/Map';
+import {Avatar} from '../components/Avatar';
+import {ObjectInteractions} from '../components/ObjectInteraction';
+import{UI} from '../components/UI';
 
 const GameRoom: React.FC = () => {
   return (
