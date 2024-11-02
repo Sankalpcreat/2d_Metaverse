@@ -1,18 +1,17 @@
 import React from 'react';
-import { Map } from '../components/Map';  
-import { Avatar } from '../components/Avatar'; 
-import { ObjectInteractions } from '../components/ObjectInteraction'; 
-import { UI } from '../components/UI'; 
+import Map from '../components/Map';
+import Avatar from '../components/Avatar';
+import ObjectInteractions from '../components/ObjectInteractions';
+import UI from '../components/UI';
 
-export const GameRoom: React.FC = () => {
+const GameRoom: React.FC = () => {
   return (
-    <div className="game-room">
-      <h1>Game Room</h1>
-      <div className="game-container">
-        <Map /> 
+    <div>
+      <UI />
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+        <Map />
         <Avatar />
-        <ObjectInteractions /> 
-        <UI /> 
+        <ObjectInteractions />
       </div>
     </div>
   );
