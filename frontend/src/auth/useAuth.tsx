@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { login as loginAction, logout as logoutAction } from '../store/authSlice';
+import { saveToken, clearToken } from '../utils/authUtils';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
@@ -8,12 +9,12 @@ export const useAuth = () => {
 
   const login = (token: string) => {
     dispatch(loginAction(token));
-    localStorage.setItem('token', token);
+    saveToken(token); 
   };
 
   const logout = () => {
     dispatch(logoutAction());
-    localStorage.removeItem('token');
+    clearToken(); 
   };
 
   return { isAuthenticated, login, logout };

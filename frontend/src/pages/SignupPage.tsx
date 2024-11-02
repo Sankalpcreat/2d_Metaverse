@@ -10,9 +10,8 @@ const SignupPage: React.FC = () => {
   const handleSignup = async (event: React.FormEvent) => {
     event.preventDefault();
 
-   
     if (username && password) {
-      const token = 'sampleAuthToken'; //now written as this only 
+      const token = 'sampleAuthToken';  
       login(token); 
     } else {
       setError('Please enter a username and password');
