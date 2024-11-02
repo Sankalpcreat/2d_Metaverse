@@ -1,6 +1,7 @@
+// src/phaser/Player.ts
+
 import Phaser from 'phaser';
 
-// Class representing the player character
 export class Player {
   sprite: Phaser.Physics.Arcade.Sprite;
 
@@ -9,13 +10,14 @@ export class Player {
     this.sprite.setCollideWorldBounds(true);
   }
 
-  update(time: number, delta: number) {}
+  update(time: number, delta: number) {
+   //yaha par  avartar ke velolity and direcrtly with key board check karenge
+  }
 
-   // Method to set the player's horizontal velocity
   setVelocityX(value: number) {
     this.sprite.setVelocityX(value);
   }
- // Method to set the player's vertical velocity
+
   setVelocityY(value: number) {
     this.sprite.setVelocityY(value);
   }

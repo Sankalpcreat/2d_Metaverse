@@ -10,7 +10,7 @@ export class InteractionManager {
     this.player = player;
     this.interactKey = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
   }
- // Method to check if the interaction key (spacebar) has been pressed
+ // space bar ko interaction ke leye build karnege 
   update() {
     if (Phaser.Input.Keyboard.JustDown(this.interactKey)) {
       console.log('Interaction triggered');

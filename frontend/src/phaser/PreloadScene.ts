@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-
+//here preload of all game map and avatar and chair and other stuff needed to synchornize with frontend
 export class PreloadScene extends Phaser.Scene {
   constructor() {
     super({ key: 'PreloadScene' });
