@@ -33,7 +33,7 @@ export const Avatar: React.FC = () => {
     const game = new Phaser.Game(config);
     // Load the player avatar image
     function preload() {
-      this.load.spritesheet('player', 'assets/avatar.png', { frameWidth: 32, frameHeight: 48 });
+      // this.load.spritesheet('player', 'assets/avatar.png', { frameWidth: 32, frameHeight: 48 });
     }
     // Initialize the player object in the game
     function create() {

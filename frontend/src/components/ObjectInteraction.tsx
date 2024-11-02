@@ -30,7 +30,7 @@ export const ObjectInteractions: React.FC = () => {
     const game = new Phaser.Game(config);
 
     function preload() {
-      this.load.image('chair', 'assets/chairSprite.png');
+      // this.load.image('chair', 'assets/chairSprite.png');
     }
 
     function create() {

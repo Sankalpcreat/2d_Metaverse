@@ -55,7 +55,7 @@
         {
          "columns":8,
          "firstgid":1,
-         "image":"Texture/TX Tileset Grass.png",
+         "image":"/Texture/TX Tileset Grass.png",
          "imageheight":256,
          "imagewidth":256,
          "margin":0,
@@ -68,7 +68,7 @@
         {
          "columns":16,
          "firstgid":65,
-         "image":"Texture/TX Struct.png",
+         "image":"/Texture/TX Struct.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
@@ -81,7 +81,7 @@
         {
          "columns":16,
          "firstgid":321,
-         "image":"Texture/TX Tileset Wall.png",
+         "image":"/Texture/TX Tileset Wall.png",
          "imageheight":512,
          "imagewidth":512,
          "margin":0,
